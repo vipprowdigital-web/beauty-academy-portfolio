@@ -26,6 +26,7 @@ export default function Navbar() {
         .nav-links { display: flex; }
         .nav-cta { display: inline-flex; }
         .hamburger { display: none !important; }
+
         @media (max-width: 768px) {
           .nav-links { display: none !important; }
           .nav-cta { display: none !important; }
@@ -33,7 +34,7 @@ export default function Navbar() {
         }
       `}</style>
 
-      <nav style={scrolled ? styles.navScrolled : styles.nav}>
+      <nav style={scrolled || menuOpen ? styles.navScrolled : styles.nav}>
         <div style={styles.container}>
           {/* Logo */}
           <a href="#" style={styles.logo}>
@@ -54,8 +55,13 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   style={styles.link}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-primary)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--color-primary)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color =
+                      "var(--color-text-muted)")
+                  }
                 >
                   {link.label}
                 </a>
@@ -64,7 +70,11 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <a href="tel:7974718311" className="btn-primary nav-cta" style={styles.cta}>
+          <a
+            href="tel:7974718311"
+            className="btn-primary nav-cta"
+            style={styles.cta}
+          >
             Get In Touch
           </a>
 
@@ -91,10 +101,11 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+
             <a
               href="tel:7974718311"
               className="btn-primary"
-              style={{ marginTop: "0.5rem", textAlign: "center", justifyContent: "center" }}
+              style={styles.mobileCta}
               onClick={() => setMenuOpen(false)}
             >
               📞 7974718311
@@ -117,6 +128,7 @@ const styles: Record<string, React.CSSProperties> = {
     transition: "all 0.3s ease",
     background: "transparent",
   },
+
   navScrolled: {
     position: "fixed",
     top: 0,
@@ -130,6 +142,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderBottom: "1px solid var(--color-border)",
     boxShadow: "var(--shadow-md)",
   },
+
   container: {
     maxWidth: "1200px",
     margin: "0 auto",
@@ -139,18 +152,21 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "space-between",
     gap: "1.5rem",
   },
+
   logo: {
     display: "flex",
     alignItems: "center",
     textDecoration: "none",
     flexShrink: 0,
   },
+
   logoImg: {
     height: "42px",
     width: "auto",
     objectFit: "contain",
     display: "block",
   },
+
   links: {
     display: "flex",
     listStyle: "none",
@@ -159,6 +175,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 0,
     alignItems: "center",
   } as React.CSSProperties,
+
   link: {
     fontFamily: "var(--font-sans)",
     fontSize: "var(--text-sm)",
@@ -168,11 +185,13 @@ const styles: Record<string, React.CSSProperties> = {
     transition: "color var(--transition-normal)",
     cursor: "pointer",
   },
+
   cta: {
     flexShrink: 0,
     padding: "0.6rem 1.25rem",
     fontSize: "0.75rem",
   },
+
   hamburger: {
     background: "none",
     border: "1px solid var(--color-border)",
@@ -185,16 +204,21 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
     flexShrink: 0,
   } as React.CSSProperties,
+
   mobileMenu: {
     display: "flex",
     flexDirection: "column",
     alignItems: "stretch",
     gap: "0.25rem",
-    padding: "1rem 1.25rem 1.5rem",
+    margin: "0.85rem 1rem 0",
+    padding: "1rem 1rem 1.25rem",
     background: "rgba(26,10,46,0.98)",
     backdropFilter: "blur(20px)",
-    borderTop: "1px solid var(--color-border)",
+    border: "1px solid var(--color-border)",
+    borderRadius: "var(--radius-lg)",
+    boxShadow: "var(--shadow-md)",
   } as React.CSSProperties,
+
   mobileLink: {
     fontFamily: "var(--font-sans)",
     fontSize: "var(--text-base)",
@@ -203,5 +227,12 @@ const styles: Record<string, React.CSSProperties> = {
     borderBottom: "1px solid rgba(201,169,110,0.08)",
     letterSpacing: "0.5px",
     display: "block",
+  },
+
+  mobileCta: {
+    margin: "0.75rem 0 0",
+    textAlign: "center",
+    justifyContent: "center",
+    width: "100%",
   },
 };
