@@ -142,6 +142,12 @@ export default function Services() {
           align-items: start;
         }
 
+        .services-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
         .services-detail-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -156,15 +162,28 @@ export default function Services() {
         }
 
         @media (max-width: 640px) {
+          .services-list {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.85rem !important;
+          }
+
           .services-list-item {
+            min-height: 125px !important;
             text-align: center !important;
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
+            padding: 1rem 0.65rem !important;
+            gap: 0.65rem !important;
           }
 
           .services-list-content {
             text-align: center !important;
+          }
+
+          .services-list-short {
+            display: none !important;
           }
 
           .services-arrow {
@@ -191,7 +210,7 @@ export default function Services() {
           </div>
 
           <div className="services-layout">
-            <div style={styles.list}>
+            <div className="services-list" style={styles.list}>
               {services.map((s) => {
                 const Icon = s.icon;
 
@@ -226,7 +245,9 @@ export default function Services() {
                       </span>
 
                       {active === s.id && (
-                        <p style={styles.listShort}>{s.short}</p>
+                        <p className="services-list-short" style={styles.listShort}>
+                          {s.short}
+                        </p>
                       )}
                     </div>
 
@@ -308,11 +329,7 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundClip: "text",
   },
 
-  list: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.4rem",
-  },
+  list: {},
 
   listItem: {
     display: "flex",
@@ -334,8 +351,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   listIcon: {
-    width: "40px",
-    height: "40px",
+    width: "42px",
+    height: "42px",
     borderRadius: "50%",
     background: "rgba(201,169,110,0.08)",
     border: "1px solid rgba(201,169,110,0.2)",
@@ -361,6 +378,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: "block",
     transition: "color 0.25s",
     margin: "0",
+    lineHeight: 1.35,
   },
 
   listShort: {
