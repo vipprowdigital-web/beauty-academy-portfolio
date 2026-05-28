@@ -103,12 +103,39 @@ export default function Hero() {
         }
 
         /* ---- MOBILE (≤640px) ---- */
-        @media (max-width: 640px) {
-          .hero-stats { gap: 1.25rem !important; }
-          .hero-img-box, .hero-img-fallback {
-            aspect-ratio: 4/3 !important;
-          }
-        }
+        /* ---- MOBILE (≤640px) ---- */
+@media (max-width: 640px) {
+  .hero-text-col {
+    text-align: center !important;
+  }
+
+  .hero-text-col .section-label {
+    display: block;
+    text-align: center !important;
+  }
+
+  .hero-text-col h1 {
+    text-align: center !important;
+  }
+
+  .hero-text-col p {
+    text-align: center !important;
+  }
+
+  .hero-text-col > div {
+    justify-content: center !important;
+  }
+
+  .hero-stats {
+    justify-content: center !important;
+    gap: 1.25rem !important;
+  }
+
+  .hero-img-box,
+  .hero-img-fallback {
+    aspect-ratio: 4/3 !important;
+  }
+}
       `}</style>
 
       <section ref={ref} style={styles.section}>
