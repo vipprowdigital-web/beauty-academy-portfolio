@@ -1,0 +1,198 @@
+"use client";
+import { useState } from "react";
+
+const services = [
+  { id: 1, icon: "📱", title: "Social Media Management", short: "Consistent, premium content for Instagram & Facebook.", points: ["Instagram & Facebook content planning", "Daily/weekly captions", "Reels ideas & scripts", "Student work promotion", "Festival & offer campaigns", "Hashtag strategy"] },
+  { id: 2, icon: "🎯", title: "Meta Ads for Admissions", short: "High-converting ad content that fills your academy.", points: ["Admission campaign captions", "Lead generation ad copy", "50% Off & Buy 1 Get 1 campaigns", "₹99 Trial Class campaigns", "UGC video ad scripts", "CTA-focused content"] },
+  { id: 3, icon: "🌐", title: "Website & Landing Pages", short: "Premium websites that build trust & generate enquiries.", points: ["Academy website development", "City-wise landing pages", "Lead form integration", "WhatsApp button", "Gallery & student portfolio", "Mobile-friendly design"] },
+  { id: 4, icon: "👑", title: "Branding & Positioning", short: "Make your academy look premium & professional.", points: ["Brand tone creation", "Instagram & Facebook bio", "Academy description", "Premium taglines", "Course descriptions", "Offer messaging"] },
+  { id: 5, icon: "📅", title: "Content Calendar Planning", short: "Stay consistent. Never run out of ideas.", points: ["Static post ideas", "Reel ideas", "Carousel ideas", "Course promotion content", "Transformation posts", "Awareness & educational posts"] },
+  { id: 6, icon: "🔍", title: "Google Business Profile", short: "Dominate local search. Get found by nearby students.", points: ["GMB description", "SEO-friendly content", "Review replies", "Google post captions", "Local keyword content", "Location-focused writing"] },
+  { id: 7, icon: "🎬", title: "Reels & Video Scripts", short: "Viral-ready scripts that attract students.", points: ["UGC-style video scripts", "Promotional reel captions", "Student testimonial captions", "Course awareness reels", "Transformation video captions", "Trend-based content ideas"] },
+  { id: 8, icon: "🚀", title: "Lead Generation Support", short: "More enquiries. More admissions. More revenue.", points: ["Lead ad content", "WhatsApp reply templates", "Enquiry message templates", "Follow-up messages", "Admission conversion copy", "Offer-based messaging"] },
+];
+
+export default function Services() {
+  const [active, setActive] = useState<number>(1);
+  const selected = services.find((s) => s.id === active)!;
+
+  return (
+    <>
+      <style>{`
+        .services-layout {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 3rem;
+          align-items: start;
+        }
+        .services-detail-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.6rem;
+        }
+        @media (max-width: 900px) {
+          .services-layout {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .services-detail-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+
+      <section id="services" className="section" style={styles.section}>
+        <div className="container">
+          <div style={styles.header}>
+            <span className="section-label">What We Do</span>
+            <div className="gold-line-center" />
+            <h2 style={styles.heading}>
+              Complete Digital Growth
+              <br />
+              <em style={styles.headingItalic}>For Your Academy</em>
+            </h2>
+          </div>
+
+          <div className="services-layout">
+            {/* Left list */}
+            <div style={styles.list}>
+              {services.map((s) => (
+                <button
+                  key={s.id}
+                  style={{ ...styles.listItem, ...(active === s.id ? styles.listItemActive : {}) }}
+                  onClick={() => setActive(s.id)}
+                >
+                  <span style={styles.listIcon}>{s.icon}</span>
+                  <div style={{ flex: 1, textAlign: "left" }}>
+                    <span style={{ ...styles.listTitle, color: active === s.id ? "var(--color-primary)" : "var(--color-text)" }}>
+                      {s.title}
+                    </span>
+                    {active === s.id && <p style={styles.listShort}>{s.short}</p>}
+                  </div>
+                  <span style={{ ...styles.arrow, opacity: active === s.id ? 1 : 0 }}>→</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Right detail */}
+            <div style={styles.detail} key={active}>
+              <div style={styles.detailIcon}>{selected.icon}</div>
+              <h3 style={styles.detailTitle}>{selected.title}</h3>
+              <div className="gold-line" />
+              <p style={styles.detailShort}>{selected.short}</p>
+              <p style={styles.detailLabel}>Includes:</p>
+              <ul className="services-detail-grid" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {selected.points.map((p) => (
+                  <li key={p} style={styles.detailItem}>
+                    <span style={styles.detailBullet}>✦</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="tel:+917974718311" className="btn-primary" style={{ marginTop: "2rem", display: "inline-flex" }}>
+                Enquire About This →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+const styles: Record<string, React.CSSProperties> = {
+  section: { background: "var(--color-secondary)" },
+  header: { textAlign: "center", maxWidth: "600px", margin: "0 auto 4rem" },
+  heading: {
+    fontFamily: "var(--font-heading)",
+    fontSize: "var(--text-4xl)",
+    fontWeight: "var(--fw-bold)",
+    color: "var(--color-text)",
+    lineHeight: 1.2,
+  },
+  headingItalic: {
+    fontStyle: "normal",
+    background: "var(--gradient-gold)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  },
+  list: { display: "flex", flexDirection: "column", gap: "0.4rem" },
+  listItem: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "0.875rem",
+    padding: "0.875rem 1rem",
+    background: "transparent",
+    border: "1px solid transparent",
+    borderRadius: "var(--radius-md)",
+    cursor: "pointer",
+    transition: "all 0.25s ease",
+    width: "100%",
+  },
+  listItemActive: {
+    background: "rgba(201,169,110,0.08)",
+    border: "1px solid var(--color-border)",
+  },
+  listIcon: { fontSize: "1.2rem", flexShrink: 0, marginTop: "2px" },
+  listTitle: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "var(--text-sm)",
+    fontWeight: "var(--fw-medium)",
+    display: "block",
+    transition: "color 0.25s",
+  },
+  listShort: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "var(--text-xs)",
+    color: "var(--color-text-muted)",
+    marginTop: "0.25rem",
+    margin: "0.25rem 0 0",
+    lineHeight: 1.5,
+  },
+  arrow: { marginLeft: "auto", color: "var(--color-primary)", fontSize: "1.1rem", transition: "opacity 0.25s", flexShrink: 0 },
+  detail: {
+    background: "var(--gradient-card)",
+    border: "1px solid var(--color-border)",
+    borderRadius: "var(--radius-lg)",
+    padding: "2.5rem",
+    animation: "fadeInUp 0.4s ease",
+  },
+  detailIcon: { fontSize: "2.5rem", marginBottom: "1rem" },
+  detailTitle: {
+    fontFamily: "var(--font-heading)",
+    fontSize: "var(--text-2xl)",
+    fontWeight: "var(--fw-bold)",
+    color: "var(--color-text)",
+    marginBottom: "0.75rem",
+  },
+  detailShort: {
+    fontFamily: "var(--font-body)",
+    fontSize: "var(--text-md)",
+    color: "var(--color-text-muted)",
+    lineHeight: 1.8,
+    margin: "0 0 1.5rem",
+  },
+  detailLabel: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "var(--text-xs)",
+    fontWeight: "var(--fw-semibold)",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "var(--color-text-muted)",
+    marginBottom: "1rem",
+    margin: "0 0 1rem",
+  },
+  detailItem: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "0.5rem",
+    fontFamily: "var(--font-sans)",
+    fontSize: "var(--text-sm)",
+    color: "var(--color-text)",
+    lineHeight: 1.4,
+  },
+  detailBullet: { color: "var(--color-primary)", fontSize: "0.6rem", flexShrink: 0, marginTop: "3px" },
+};
