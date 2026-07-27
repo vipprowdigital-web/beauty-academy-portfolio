@@ -241,7 +241,7 @@ export default function Hero() {
                     Beauty Academies
                   </span>
                   <br />
-                  <span style={styles.line3}>Digitally</span>
+                  <span className="animate-shimmer" style={styles.lineGold}>Digitally</span>
                 </span>
 
                 <span className="mobile-heading">
@@ -279,7 +279,7 @@ export default function Hero() {
 
               <div data-reveal className="hero-stats">
                 {[
-                  { number: "5+", label: "Academies Served" },
+                  { number: "20+", label: "Academies Served" },
                   { number: "100+", label: "Campaigns Created" },
                   { number: "8+", label: "Services Offered" },
                   { number: "∞", label: "Growth Delivered" },

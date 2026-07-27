@@ -36,7 +36,7 @@ const projects = [
       "Portfolio Content",
     ],
     color: "#5B21B6",
-    instagram: "https://www.instagram.com/gauramakeupstudio/",
+    instagram: "https://www.instagram.com/gauramakeupacademy_",
     logo: "/GAURA.png", // 👈 apni logo image ka path yahan daalein
   },
   {
@@ -129,6 +129,49 @@ const projects = [
     instagram: "https://www.instagram.com/uk_londonbeautyschoolrudrapur/",
     logo: "/Athenian LOGO .jpeg", // 👈 apni logo image ka path yahan daalein
   },
+{
+  id: 8,
+  name: "A Square Makeup Academy",
+  location: "Hyderabad, Telangana",
+  tagline: "International Standard Luxury Makeup Academy",
+  badge: "Beauty Education Brand",
+  work: [
+    "Brand Identity Design",
+    "Social Media Management",
+    "Meta Ads Campaigns",
+    "Course Launch Promotions",
+    "Student Testimonial Content",
+    "Creative Reels & Video Marketing",
+  ],
+  color: "#5B21B6",
+  instagram: "https://www.instagram.com/asquaremakeupacademy/#",
+  logo: "/A SQURE LOGO.png",
+},
+
+{
+  id: 8,
+  name: "Tempus Academy",
+  location: "Sector 74, Noida",
+  tagline: "Shaping Future Beauty Professionals",
+  badge: "Standard of Excellence",
+  work: [
+    "Brand Identity Content",
+    "Professional Makeup Academy Branding",
+    "Social Media Management",
+    "Meta Ads Campaigns",
+    "Course Launch Promotions",
+    "Student Testimonial Posts",
+    "Practical Training Reels",
+    "Student Walk & Ramp Walk Videos",
+    "Portfolio Showcase Content",
+    "Admissions Campaigns",
+  ],
+  color: "#5B21B6",
+  instagram: "https://www.instagram.com/academytempus/",
+  logo: "/tempus old logo.jpeg",
+}
+  
+
 
 
 
