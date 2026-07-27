@@ -268,9 +268,12 @@ export default function Hero() {
               </p>
 
               <div data-reveal style={styles.actions}>
-                <a href="#projects" className="btn-primary">
-                  View Our Work →
-                </a>
+               <a href="#projects"
+  className="btn-primary"
+  style={{ color: "#ffffff" }}
+>
+  View Our Work →
+</a>
 
                 <a href="tel:+917974718311" className="btn-outline">
                    7974718311
