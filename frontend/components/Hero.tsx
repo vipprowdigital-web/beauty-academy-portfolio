@@ -256,9 +256,7 @@ export default function Hero() {
                     <span className="animate-shimmer" style={styles.lineGold}>
                       Academies
                     </span>{" "}
-                    <span className="mobile-digitally" style={styles.line3}>
-                      Digitally
-                    </span>
+                     <span className="animate-shimmer" style={styles.lineGold}>Digitally</span>
                   </span>
                 </span>
               </h1>
@@ -275,7 +273,7 @@ export default function Hero() {
                 </a>
 
                 <a href="tel:+917974718311" className="btn-outline">
-                  📞 7974718311
+                   7974718311
                 </a>
               </div>
 

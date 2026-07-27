@@ -17,7 +17,7 @@ const projects = [
       "Admission Campaigns",
       "Coming Soon Campaigns",
     ],
-    color: "#7C4DFF",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/bellezadehradun/",
     logo: "/belleza_logo_mobile.jpg", // 👈 apni logo image ka path yahan daalein
   },
@@ -35,7 +35,7 @@ const projects = [
       "Lead Generation Messaging",
       "Portfolio Content",
     ],
-    color: "#C084FC",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/gauramakeupstudio/",
     logo: "/GAURA.png", // 👈 apni logo image ka path yahan daalein
   },
@@ -53,7 +53,7 @@ const projects = [
       "Student Work Promotion",
       "Course Promotion",
     ],
-    color: "#9F7AEA",
+    color: "#5B21B6",
     instagram: " https://www.instagram.com/thebigtreebeautyacademy",
     logo: "/big tree logo.png", // 👈 apni logo image ka path yahan daalein
   },
@@ -71,9 +71,9 @@ const projects = [
       "Video Ad Transcripts",
       "Premium Brand Messaging",
     ],
-    color: "#7DD3FC",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/tipsalon__/",
-    logo: "/logos/tipsalon.png", // 👈 apni logo image ka path yahan daalein
+    logo: "/Logo (1).jpeg", // 👈 apni logo image ka path yahan daalein
   },
   {
     id: 5,
@@ -88,7 +88,7 @@ const projects = [
       "Skin Prep Content",
       "Local SEO Replies",
     ],
-    color: "#22C55E",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/allure_makeup.studio/",
     logo: "/allure.jpg", // 👈 apni logo image ka path yahan daalein
   },
@@ -106,7 +106,7 @@ const projects = [
       "Student Testimonial Posts",
       "Reels Captions",
     ],
-    color: "#4DA8FF",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/uk_londonbeautyschoolrudrapur/",
     logo: "/london-beuaty-school.jpg.jpeg", // 👈 apni logo image ka path yahan daalein
   },
@@ -125,7 +125,7 @@ const projects = [
       "Student Testimonial Posts",
       "Reels Captions",
     ],
-    color: "#4DA8FF",
+    color: "#5B21B6",
     instagram: "https://www.instagram.com/uk_londonbeautyschoolrudrapur/",
     logo: "/Athenian LOGO .jpeg", // 👈 apni logo image ka path yahan daalein
   },
@@ -138,7 +138,7 @@ const projects = [
 const InstagramIcon = () => (
   <svg
     width="16"
-    height="16"
+    height="12"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -193,20 +193,19 @@ function getInitials(name: string) {
 }
 
 export default function Projects() {
-  const [slidesPerView, setSlidesPerView] = useState(3);
+  const [slidesPerView, setSlidesPerView] = useState(2);
   const [index, setIndex] = useState(0);
 
   // Responsive slides-per-view
-  useEffect(() => {
-    const updateSlides = () => {
-      if (window.innerWidth < 640) setSlidesPerView(1);
-      else if (window.innerWidth < 1024) setSlidesPerView(2);
-      else setSlidesPerView(3);
-    };
-    updateSlides();
-    window.addEventListener("resize", updateSlides);
-    return () => window.removeEventListener("resize", updateSlides);
-  }, []);
+ useEffect(() => {
+  const updateSlides = () => {
+    if (window.innerWidth < 640) setSlidesPerView(1);
+    else setSlidesPerView(2);
+  };
+  updateSlides();
+  window.addEventListener("resize", updateSlides);
+  return () => window.removeEventListener("resize", updateSlides);
+}, []);
 
   const maxIndex = Math.max(0, projects.length - slidesPerView);
   const isMobile = slidesPerView === 1;
@@ -244,15 +243,14 @@ export default function Projects() {
           box-sizing: border-box;
         }
 
-        .project-card {
-          display: flex;
-          align-items: stretch;
-          height: 100%;
-          min-height: 150px;
-          overflow: hidden;
-          padding: 0 !important;
-        }
-
+       .project-card {
+  display: flex;
+  align-items: stretch;
+  height: 200px;      /* fixed height — "100%" ki jagah, isse control milega */
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 !important;
+}
         @media (max-width: 640px) {
           .project-card {
             flex-direction: column;
@@ -292,8 +290,8 @@ export default function Projects() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 30px;
-          height: 30px;
+          width: 24px;
+          height: 24px;
           border-radius: var(--radius-full);
           border: 1px solid rgba(255,255,255,0.12);
           background: rgba(255,255,255,0.05);
@@ -397,9 +395,9 @@ export default function Projects() {
                         ...styles.imagePanel,
                         width: isMobile ? "100%" : "50%",
                         height: isMobile ? "150px" : "auto",
-                        background: project.logo
-                          ? "var(--color-white)"
-                          : `linear-gradient(160deg, ${project.color}, ${project.color}55)`,
+                       background: project.logo
+  ? "transparent"
+  : `linear-gradient(160deg, ${project.color}, ${project.color}55)`,
                       }}
                     >
                       {project.logo ? (
@@ -465,7 +463,7 @@ export default function Projects() {
                           whiteSpace: isMobile ? "normal" : "nowrap",
                         }}
                       >
-                        📍 {project.location}
+                         {project.location}
                       </p>
 
                       <div
@@ -577,13 +575,14 @@ const styles: Record<string, React.CSSProperties> = {
     minHeight: "100%",
   },
 
-  imagePanel: {
+ imagePanel: {
     flexShrink: 0,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
-  },
+    height: "100%",   // "auto" ki jagah — ab parent card ki fixed height follow karega
+},
 
   imageInitials: {
     fontFamily: "var(--font-accent)",
@@ -597,13 +596,13 @@ const styles: Record<string, React.CSSProperties> = {
     width: "100%",
     height: "100%",
     objectFit: "contain",
-    padding: "0.6rem",
+     padding: "0.9rem 2.5rem", 
   },
 
   contentPanel: {
     width: "50%",
     flex: "1 1 50%",
-    padding: "1rem 1.1rem",
+      padding: "0.65rem 0.85rem",
     display: "flex",
     flexDirection: "column",
     minWidth: 0,
@@ -614,7 +613,7 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "0.5rem",
-    margin: "0 0 0.5rem",
+    margin: "0 0 0.3rem",
   },
 
   badge: {
@@ -632,8 +631,8 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "var(--text-md)",
     fontWeight: "var(--fw-semibold)",
     color: "var(--color-text)",
-    margin: "0 0 0.2rem",
-    lineHeight: 1.25,
+     margin: "0 0 0.15rem",   // pehle "0 0 0.2rem" tha
+    lineHeight: 1.15,
     textAlign: "left",
   },
 
@@ -641,7 +640,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "var(--font-sans)",
     fontSize: "11px",
     color: "var(--color-text-muted)",
-    margin: "0 0 0.6rem",
+    margin: "0 0 0.35rem",
     textAlign: "left",
     overflow: "hidden",
     textOverflow: "ellipsis",
@@ -653,20 +652,20 @@ const styles: Record<string, React.CSSProperties> = {
     flexWrap: "wrap",
     gap: "0.4rem",
     justifyContent: "flex-start",
-    marginTop: "auto",
+    marginTop: "0.6rem",
   },
 
   workTag: {
     fontFamily: "var(--font-sans)",
-    fontSize: "10px",
+    fontSize: "9px",           // pehle "10px" tha
     color: "var(--color-text-muted)",
-    padding: "0.2rem 0.55rem",
+    padding: "0.15rem 0.45rem", // pehle "0.2rem 0.55rem" tha
     background: "rgba(255,255,255,0.04)",
     border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "var(--radius-sm)",
     textAlign: "center",
     whiteSpace: "nowrap",
-  },
+},
 
   controls: {
     display: "flex",

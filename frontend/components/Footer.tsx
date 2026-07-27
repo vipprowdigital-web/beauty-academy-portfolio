@@ -91,7 +91,7 @@ export default function Footer() {
 
                 <div style={styles.contactInfo}>
                   <a href="tel:7974718311" style={styles.contactItem}>
-                     79747 18311
+                     +91 79747 18311
                   </a>
 
                   <a
@@ -109,7 +109,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    🚀 croxiss.com
+                     croxiss.com
                   </a>
 
                   <a
