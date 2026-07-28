@@ -15,7 +15,6 @@ const projects = [
       "Google Business Profile",
       "Reels Captions",
       "Admission Campaigns",
-      "Coming Soon Campaigns",
     ],
     color: "#5B21B6",
     instagram: "https://www.instagram.com/bellezadehradun/",
@@ -103,7 +102,6 @@ const projects = [
       "Social Media Management",
       "Meta Ads Campaigns",
       "Course Launch Promotions",
-      "Student Testimonial Posts",
       "Reels Captions",
     ],
     color: "#5B21B6",
@@ -122,7 +120,6 @@ const projects = [
       "Social Media Management",
       "Meta Ads Campaigns",
       "Course Launch Promotions",
-      "Student Testimonial Posts",
       "Reels Captions",
     ],
     color: "#5B21B6",
@@ -160,11 +157,7 @@ const projects = [
     "Social Media Management",
     "Meta Ads Campaigns",
     "Course Launch Promotions",
-    "Student Testimonial Posts",
-    "Practical Training Reels",
-    "Student Walk & Ramp Walk Videos",
-    "Portfolio Showcase Content",
-    "Admissions Campaigns",
+    
   ],
   color: "#5B21B6",
   instagram: "https://www.instagram.com/academytempus/",
@@ -289,7 +282,7 @@ export default function Projects() {
        .project-card {
   display: flex;
   align-items: stretch;
-  height: 200px;      /* fixed height — "100%" ki jagah, isse control milega */
+  height: 320px;      /* fixed height — "100%" ki jagah, isse control milega */
   min-height: 0;
   overflow: hidden;
   padding: 0 !important;
@@ -515,7 +508,7 @@ export default function Projects() {
                           marginTop: isMobile ? "0.9rem" : "auto",
                         }}
                       >
-                        {project.work.slice(0, 3).map((item) => (
+                        {project.work.slice(0, 5).map((item) => (
                           <span key={item} style={styles.workTag}>
                             {item}
                           </span>
@@ -700,7 +693,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   workTag: {
     fontFamily: "var(--font-sans)",
-    fontSize: "9px",           // pehle "10px" tha
+    fontSize: "13px",           // pehle "10px" tha
     color: "var(--color-text-muted)",
     padding: "0.15rem 0.45rem", // pehle "0.2rem 0.55rem" tha
     background: "rgba(255,255,255,0.04)",
